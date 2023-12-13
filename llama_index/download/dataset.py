@@ -30,13 +30,13 @@ PATH_TYPE = Union[str, Path]
 
 
 def _get_source_files_list(source_tree_url: str, path: str) -> List[str]:
-    """Get the list of source files to download."""
+    """Get the list of source files to download."""  # 获取要下载的源文件列表
     resp = requests.get(source_tree_url + path + "?recursive=1")
     payload = resp.json()["payload"]
     return [item["name"] for item in payload["tree"]["items"]]
 
 
-def get_dataset_info(
+def get_dataset_info(  # 下载数据集
     local_dir_path: PATH_TYPE,
     remote_dir_path: PATH_TYPE,
     remote_source_dir_path: PATH_TYPE,
@@ -95,7 +95,7 @@ def get_dataset_info(
     }
 
 
-def download_dataset_and_source_files(
+def download_dataset_and_source_files(  # 下载数据集和源文件
     local_dir_path: PATH_TYPE,
     remote_lfs_dir_path: PATH_TYPE,
     source_files_dir_path: PATH_TYPE,
@@ -152,7 +152,7 @@ def download_dataset_and_source_files(
                     f.write(source_file_raw_content)
 
 
-def download_llama_dataset(
+def download_llama_dataset(  # 下载llama数据集
     dataset_class: str,
     llama_hub_url: str = LLAMA_HUB_URL,
     llama_datasets_lfs_url: str = LLAMA_DATASETS_LFS_URL,

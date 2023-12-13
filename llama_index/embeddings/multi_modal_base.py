@@ -14,29 +14,29 @@ from llama_index.utils import get_tqdm_iterable
 
 
 class MultiModalEmbedding(BaseEmbedding):
-    """Base class for Multi Modal embeddings."""
+    """Base class for Multi Modal embeddings."""  # 基类多模嵌入。
 
     @abstractmethod
     def _get_image_embedding(self, img_file_path: ImageType) -> Embedding:
         """
-        Embed the input image synchronously.
+        Embed the input image synchronously.  # 同步嵌入输入图像。
 
         Subclasses should implement this method. Reference get_image_embedding's
-        docstring for more information.
+        docstring for more information.  # 子类应该实现这个方法。参考get_image_embedding的文档字符串以获取更多信息。
         """
 
     @abstractmethod
     async def _aget_image_embedding(self, img_file_path: ImageType) -> Embedding:
         """
-        Embed the input image asynchronously.
+        Embed the input image asynchronously.  # 异步嵌入输入图像。
 
         Subclasses should implement this method. Reference get_image_embedding's
-        docstring for more information.
+        docstring for more information.  # 子类应该实现这个方法。参考get_image_embedding的文档字符串以获取更多信息。
         """
 
     def get_image_embedding(self, img_file_path: ImageType) -> Embedding:
         """
-        Embed the input image.
+        Embed the input image.  # 嵌入输入图像。
         """
         with self.callback_manager.event(
             CBEventType.EMBEDDING, payload={EventPayload.SERIALIZED: self.to_dict()}
@@ -68,11 +68,11 @@ class MultiModalEmbedding(BaseEmbedding):
 
     def _get_image_embeddings(self, img_file_paths: List[ImageType]) -> List[Embedding]:
         """
-        Embed the input sequence of image synchronously.
+        Embed the input sequence of image synchronously.  # 同步嵌入输入图像序列。
 
-        Subclasses can implement this method if batch queries are supported.
+        Subclasses can implement this method if batch queries are supported.  # 如果支持批量查询，子类可以实现这个方法。
         """
-        # Default implementation just loops over _get_image_embedding
+        # Default implementation just loops over _get_image_embedding  # 默认实现只是循环遍历_get_image_embedding
         return [
             self._get_image_embedding(img_file_path) for img_file_path in img_file_paths
         ]
@@ -81,9 +81,9 @@ class MultiModalEmbedding(BaseEmbedding):
         self, img_file_paths: List[ImageType]
     ) -> List[Embedding]:
         """
-        Embed the input sequence of image asynchronously.
+        Embed the input sequence of image asynchronously.  # 异步嵌入输入图像序列。
 
-        Subclasses can implement this method if batch queries are supported.
+        Subclasses can implement this method if batch queries are supported.  # 如果支持批量查询，子类可以实现这个方法。
         """
         return await asyncio.gather(
             *[
@@ -95,7 +95,7 @@ class MultiModalEmbedding(BaseEmbedding):
     def get_image_embedding_batch(
         self, img_file_paths: List[ImageType], show_progress: bool = False
     ) -> List[Embedding]:
-        """Get a list of image embeddings, with batching."""
+        """Get a list of image embeddings, with batching."""  # 获取图像嵌入列表，批处理。
         cur_batch: List[ImageType] = []
         result_embeddings: List[Embedding] = []
 
@@ -131,7 +131,7 @@ class MultiModalEmbedding(BaseEmbedding):
     async def aget_image_embedding_batch(
         self, img_file_paths: List[ImageType], show_progress: bool = False
     ) -> List[Embedding]:
-        """Asynchronously get a list of image embeddings, with batching."""
+        """Asynchronously get a list of image embeddings, with batching."""  # 异步获取图像嵌入列表，批处理。
         cur_batch: List[ImageType] = []
         callback_payloads: List[Tuple[str, List[ImageType]]] = []
         result_embeddings: List[Embedding] = []
@@ -151,7 +151,7 @@ class MultiModalEmbedding(BaseEmbedding):
                 embeddings_coroutines.append(self._aget_image_embeddings(cur_batch))
                 cur_batch = []
 
-        # flatten the results of asyncio.gather, which is a list of embeddings lists
+        # flatten the results of asyncio.gather, which is a list of embeddings lists  # 扁平化asyncio.gather的结果，这是一个嵌入列表的列表
         nested_embeddings = []
         if show_progress:
             try:

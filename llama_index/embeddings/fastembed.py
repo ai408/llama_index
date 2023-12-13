@@ -9,7 +9,7 @@ from llama_index.embeddings.base import BaseEmbedding
 
 class FastEmbedEmbedding(BaseEmbedding):
     """
-    Qdrant FastEmbedding models.
+    Qdrant FastEmbedding models.  # Qdrant FastEmbedding模型。
     FastEmbed is a lightweight, fast, Python library built for embedding generation.
     See more documentation at:
     * https://github.com/qdrant/fastembed/

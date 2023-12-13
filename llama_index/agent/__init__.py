@@ -8,10 +8,10 @@ from llama_index.agent.retriever_openai_agent import FnRetrieverOpenAIAgent
 RetrieverOpenAIAgent = FnRetrieverOpenAIAgent
 
 __all__ = [
-    "OpenAIAgent",
-    "OpenAIAssistantAgent",
-    "FnRetrieverOpenAIAgent",
-    "RetrieverOpenAIAgent",  # for backwards compatibility
-    "ContextRetrieverOpenAIAgent",
-    "ReActAgent",
+    "OpenAIAgent",  # OpenAI智能体
+    "OpenAIAssistantAgent",  # OpenAI助手智能体
+    "FnRetrieverOpenAIAgent",  # FnRetrieverOpenAI智能体
+    "RetrieverOpenAIAgent",  # for backwards compatibility  # RetrieverOpenAI智能体
+    "ContextRetrieverOpenAIAgent",  # ContextRetrieverOpenAI智能体
+    "ReActAgent",  # ReAct智能体
 ]

@@ -8,13 +8,13 @@ from llama_index.embeddings.base import DEFAULT_EMBED_BATCH_SIZE, BaseEmbedding
 
 
 class GooglePaLMEmbedding(BaseEmbedding):
-    """Class for Google PaLM embeddings.
+    """Class for Google PaLM embeddings.  # Google PaLM嵌入的类。
 
     Args:
-        model_name (str): Model for embedding.
-            Defaults to "models/embedding-gecko-001".
+        model_name (str): Model for embedding.  # 嵌入模型。
+            Defaults to "models/embedding-gecko-001".  # 默认为“models/embedding-gecko-001”。
 
-        api_key (Optional[str]): API key to access the model. Defaults to None.
+        api_key (Optional[str]): API key to access the model. Defaults to None.  # 访问模型的API密钥。默认为无。
     """
 
     _model: Any = PrivateAttr()

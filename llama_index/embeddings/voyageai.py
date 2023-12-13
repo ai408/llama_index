@@ -1,4 +1,4 @@
-"""Voyage embeddings file."""
+"""Voyage embeddings file."""  # Voyage嵌入文件
 
 from typing import Any, List, Optional
 
@@ -10,14 +10,14 @@ DEFAULT_VOYAGE_BATCH_SIZE = 8
 
 
 class VoyageEmbedding(BaseEmbedding):
-    """Class for Voyage embeddings.
+    """Class for Voyage embeddings.  Voyage嵌入类
 
     Args:
-        model_name (str): Model for embedding.
-            Defaults to "voyage-01".
+        model_name (str): Model for embedding.  Embedding的模型
+            Defaults to "voyage-01".  默认为“voyage-01”
 
-        voyage_api_key (Optional[str]): Voyage API key. Defaults to None.
-            You can either specify the key here or store it as an environment variable.
+        voyage_api_key (Optional[str]): Voyage API key. Defaults to None.  Voyage API密钥。默认为无
+            You can either specify the key here or store it as an environment variable.  您可以在此处指定密钥，也可以将其存储为环境变量
     """
 
     _model: Any = PrivateAttr()

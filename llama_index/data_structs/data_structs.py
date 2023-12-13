@@ -1,6 +1,6 @@
 """Data structures.
 
-Nodes are decoupled from the indices.
+Nodes are decoupled from the indices.  # 节点与索引分离
 
 """
 

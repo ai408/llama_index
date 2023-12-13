@@ -8,7 +8,7 @@ from llama_index.objects.tool_node_mapping import (
     SimpleToolNodeMapping,
 )
 
-__all__ = [
+__all__ = [  # LlamaIndex对象
     "ObjectRetriever",
     "ObjectIndex",
     "SimpleObjectNodeMapping",

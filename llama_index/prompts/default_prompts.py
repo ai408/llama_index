@@ -7,7 +7,7 @@ from llama_index.prompts.prompt_type import PromptType
 # Tree
 ############################################
 
-DEFAULT_SUMMARY_PROMPT_TMPL = (
+DEFAULT_SUMMARY_PROMPT_TMPL = (  # 默认的摘要模板
     "Write a summary of the following. Try to use only the "
     "information provided. "
     "Try to include as many key details as possible.\n"

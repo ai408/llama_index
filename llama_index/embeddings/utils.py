@@ -1,4 +1,4 @@
-"""Embedding utils for LlamaIndex."""
+"""Embedding utils for LlamaIndex."""  # LlamaIndex的嵌入工具。
 import os
 from typing import TYPE_CHECKING, List, Optional, Union
 

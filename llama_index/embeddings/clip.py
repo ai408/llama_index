@@ -12,7 +12,7 @@ from llama_index.schema import ImageType
 logger = logging.getLogger(__name__)
 
 
-AVAILABLE_CLIP_MODELS = (
+AVAILABLE_CLIP_MODELS = (  # 所有可用的模型
     "RN50",
     "RN101",
     "RN50x4",
@@ -27,11 +27,11 @@ DEFAULT_CLIP_MODEL = "ViT-B/32"
 
 
 class ClipEmbedding(MultiModalEmbedding):
-    """CLIP embedding models for encoding text and image for Multi-Modal purpose.
+    """CLIP embedding models for encoding text and image for Multi-Modal purpose.  # 用于编码文本和图像的CLIP嵌入模型，用于多模式目的
 
     This class provides an interface to generate embeddings using a model
     deployed in OpenAI CLIP. At the initialization it requires a model name
-    of CLIP.
+    of CLIP.  # 此类提供了一个接口，用于使用OpenAI CLIP中部署的模型生成嵌入。在初始化时，它需要一个CLIP的模型名称。
 
     Note:
         Requires `clip` package to be available in the PYTHONPATH. It can be installed with
@@ -56,7 +56,7 @@ class ClipEmbedding(MultiModalEmbedding):
         model_name: str = DEFAULT_CLIP_MODEL,
         **kwargs: Any,
     ):
-        """Initializes the ClipEmbedding class.
+        """Initializes the ClipEmbedding class.  # 初始化ClipEmbedding类。
 
         During the initialization the `clip` package is imported.
 

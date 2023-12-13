@@ -11,6 +11,7 @@ global_stack_trace = ContextVar("trace", default=[BASE_TRACE_EVENT])
 
 class BaseCallbackHandler(ABC):
     """Base callback handler that can be used to track event starts and ends."""
+    # 这个类是一个抽象类，不能直接实例化，只能继承
 
     def __init__(
         self,

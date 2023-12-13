@@ -7,7 +7,7 @@ from llama_index.embeddings.base import BaseEmbedding
 
 
 class OllamaEmbedding(BaseEmbedding):
-    """Class for Ollama embeddings."""
+    """Class for Ollama embeddings."""  # Ollama嵌入类
 
     base_url: str = Field(description="Base url the model is hosted by Ollama")
     model_name: str = Field(description="The Ollama model to use.")
@@ -67,11 +67,11 @@ class OllamaEmbedding(BaseEmbedding):
         return embeddings_list
 
     async def _aget_text_embeddings(self, texts: List[str]) -> List[List[float]]:
-        """Asynchronously get text embeddings."""
+        """Asynchronously get text embeddings."""  # 异步获取文本嵌入
         return self._get_text_embeddings(texts)
 
     def get_general_text_embedding(self, prompt: str) -> List[float]:
-        """Get Ollama embedding."""
+        """Get Ollama embedding."""  # 获取Ollama嵌入
         try:
             import requests
         except ImportError:

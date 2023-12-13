@@ -4,8 +4,8 @@ from llama_index.chat_engine.context import ContextChatEngine
 from llama_index.chat_engine.simple import SimpleChatEngine
 
 __all__ = [
-    "SimpleChatEngine",
-    "CondenseQuestionChatEngine",
-    "ContextChatEngine",
-    "CondensePlusContextChatEngine",
+    "SimpleChatEngine",  # 简单的聊天引擎
+    "CondenseQuestionChatEngine",  # 压缩问题的聊天引擎
+    "ContextChatEngine",  # 上下文聊天引擎
+    "CondensePlusContextChatEngine",  # 压缩问题+上下文聊天引擎
 ]

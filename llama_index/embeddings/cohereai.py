@@ -6,7 +6,7 @@ from llama_index.callbacks import CallbackManager
 from llama_index.embeddings.base import DEFAULT_EMBED_BATCH_SIZE, BaseEmbedding
 
 
-# Enums for validation and type safety
+# Enums for validation and type safety  # 用于验证和类型安全的枚举
 class CohereAIModelName(str, Enum):
     ENGLISH_V3 = "embed-english-v3.0"
     ENGLISH_LIGHT_V3 = "embed-english-light-v3.0"
@@ -36,7 +36,7 @@ CAMN = CohereAIModelName
 CAIT = CohereAIInputType
 CAT = CohereAITruncate
 
-# This list would be used for model name and input type validation
+# This list would be used for model name and input type validation  # 此列表将用于模型名称和输入类型验证
 VALID_MODEL_INPUT_TYPES = [
     (CAMN.ENGLISH_V3, CAIT.SEARCH_QUERY),
     (CAMN.ENGLISH_LIGHT_V3, CAIT.SEARCH_QUERY),
@@ -63,8 +63,10 @@ VALID_TRUNCATE_OPTIONS = [CAT.START, CAT.END, CAT.NONE]
 
 
 # Assuming BaseEmbedding is a Pydantic model and handles its own initializations
+# 假设BaseEmbedding是一个Pydantic模型，并处理自己的初始化
 class CohereEmbedding(BaseEmbedding):
     """CohereEmbedding uses the Cohere API to generate embeddings for text."""
+    # CohereEmbedding使用Cohere API为文本生成嵌入
 
     # Instance variables initialized via Pydantic's mechanism
     cohere_client: Any = Field(description="CohereAI client")

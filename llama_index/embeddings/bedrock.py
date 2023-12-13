@@ -138,15 +138,15 @@ class BedrockEmbedding(BaseEmbedding):
         callback_manager: Optional[CallbackManager] = None,
     ) -> "BedrockEmbedding":
         """
-        Instantiate using AWS credentials.
+        Instantiate using AWS credentials.  # 实例化使用AWS凭证。
 
         Args:
-            model_name (str) : Name of the model
-            aws_access_key_id (str): AWS access key ID
-            aws_secret_access_key (str): AWS secret access key
-            aws_session_token (str): AWS session token
-            aws_region (str): AWS region where the service is located
-            aws_profile (str): AWS profile, when None, default profile is chosen automatically
+            model_name (str) : Name of the model  # 模型名称
+            aws_access_key_id (str): AWS access key ID  # AWS访问密钥ID
+            aws_secret_access_key (str): AWS secret access key  # AWS秘密访问密钥
+            aws_session_token (str): AWS session token  # AWS会话令牌
+            aws_region (str): AWS region where the service is located  # 服务所在的AWS区域
+            aws_profile (str): AWS profile, when None, default profile is chosen automatically  # AWS配置文件，当为None时，自动选择默认配置文件
 
         Example:
                 .. code-block:: python
@@ -226,8 +226,8 @@ class BedrockEmbedding(BaseEmbedding):
     def _get_request_body(
         self, provider: str, payload: str, type: Literal["text", "query"]
     ) -> Any:
-        """Build the request body as per the provider.
-        Currently supported providers are amazon, cohere.
+        """Build the request body as per the provider.  # 根据提供者构建请求正文。
+        Currently supported providers are amazon, cohere.  # 目前支持的提供者是amazon，cohere。
 
         amazon:
             Sample Payload of type str
