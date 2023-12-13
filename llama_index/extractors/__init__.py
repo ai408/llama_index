@@ -11,7 +11,7 @@ from llama_index.extractors.metadata_extractors import (
     TitleExtractor,
 )
 
-__all__ = [
+__all__ = [  # 提取器
     "SummaryExtractor",
     "QuestionsAnsweredExtractor",
     "TitleExtractor",

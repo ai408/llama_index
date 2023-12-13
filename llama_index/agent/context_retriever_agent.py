@@ -23,7 +23,7 @@ from llama_index.tools import BaseTool
 from llama_index.utils import print_text
 
 # inspired by DEFAULT_QA_PROMPT_TMPL from llama_index/prompts/default_prompts.py
-DEFAULT_QA_PROMPT_TMPL = (
+DEFAULT_QA_PROMPT_TMPL = (  # 默认的问答模板
     "Context information is below.\n"
     "---------------------\n"
     "{context_str}\n"

@@ -5,7 +5,7 @@ from llama_index.embeddings.base import BaseEmbedding
 
 
 class ElasticsearchEmbedding(BaseEmbedding):
-    """Elasticsearch embedding models.
+    """Elasticsearch embedding models.  # Elasticsearch嵌入模型。
 
     This class provides an interface to generate embeddings using a model deployed
     in an Elasticsearch cluster. It requires an Elasticsearch connection object

@@ -11,7 +11,7 @@ EXAMPLE_URL = "https://clarifai.com/anthropic/completion/models/claude-v2"
 
 
 class ClarifaiEmbedding(BaseEmbedding):
-    """Clarifai embeddings class.
+    """Clarifai embeddings class.  # Clarifai嵌入类。
 
     Clarifai uses Personal Access Tokens(PAT) to validate requests.
     You can create and manage PATs under your Clarifai account security settings.

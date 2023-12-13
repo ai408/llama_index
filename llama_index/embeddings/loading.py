@@ -21,7 +21,7 @@ RECOGNIZED_EMBEDDINGS: Dict[str, Type[BaseEmbedding]] = {
 
 
 def load_embed_model(data: dict) -> BaseEmbedding:
-    """Load Embedding by name."""
+    """Load Embedding by name."""  # 加载嵌入模型
     if isinstance(data, BaseEmbedding):
         return data
     name = data.get("class_name", None)
@@ -30,8 +30,8 @@ def load_embed_model(data: dict) -> BaseEmbedding:
     if name not in RECOGNIZED_EMBEDDINGS:
         raise ValueError(f"Invalid Embedding name: {name}")
 
-    # special handling for LangchainEmbedding
-    # it can be any local model technially
+    # special handling for LangchainEmbedding  # LangchainEmbedding的特殊处理
+    # it can be any local model technially  # 它可以是任何本地模型技术
     if name == LangchainEmbedding.class_name():
         local_name = data.get("model_name", None)
         if local_name is not None:

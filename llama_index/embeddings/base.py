@@ -21,15 +21,15 @@ Embedding = List[float]
 
 
 class SimilarityMode(str, Enum):
-    """Modes for similarity/distance."""
+    """Modes for similarity/distance."""  # 这里的str是指继承的是str类
 
-    DEFAULT = "cosine"
-    DOT_PRODUCT = "dot_product"
-    EUCLIDEAN = "euclidean"
+    DEFAULT = "cosine"  # 这里的DEFAULT是指继承的是str类的DEFAULT属性
+    DOT_PRODUCT = "dot_product"  # 这里的DOT_PRODUCT是指继承的是str类的DOT_PRODUCT属性
+    EUCLIDEAN = "euclidean"  # 这里的EUCLIDEAN是指继承的是str类的EUCLIDEAN属性
 
 
 def mean_agg(embeddings: List[Embedding]) -> Embedding:
-    """Mean aggregation for embeddings."""
+    """Mean aggregation for embeddings."""  # 这里的Embedding是指上面的Embedding = List[float]
     return list(np.array(embeddings).mean(axis=0))
 
 
@@ -38,7 +38,7 @@ def similarity(
     embedding2: Embedding,
     mode: SimilarityMode = SimilarityMode.DEFAULT,
 ) -> float:
-    """Get embedding similarity."""
+    """Get embedding similarity."""  # 这里的Embedding是指上面的Embedding = List[float]
     if mode == SimilarityMode.EUCLIDEAN:
         # Using -euclidean distance as similarity to achieve same ranking order
         return -float(np.linalg.norm(np.array(embedding1) - np.array(embedding2)))
@@ -51,7 +51,7 @@ def similarity(
 
 
 class BaseEmbedding(TransformComponent):
-    """Base class for embeddings."""
+    """Base class for embeddings."""  # 这里的TransformComponent是指继承的是TransformComponent类
 
     model_name: str = Field(
         default="unknown", description="The name of the embedding model."
@@ -69,7 +69,7 @@ class BaseEmbedding(TransformComponent):
     class Config:
         arbitrary_types_allowed = True
 
-    @validator("callback_manager", pre=True)
+    @validator("callback_manager", pre=True)  # 这里的callback_manager是指上面的callback_manager
     def _validate_callback_manager(
         cls, v: Optional[CallbackManager]
     ) -> CallbackManager:
@@ -80,10 +80,10 @@ class BaseEmbedding(TransformComponent):
     @abstractmethod
     def _get_query_embedding(self, query: str) -> Embedding:
         """
-        Embed the input query synchronously.
+        Embed the input query synchronously.  # 这里的query是指上面的query
 
         Subclasses should implement this method. Reference get_query_embedding's
-        docstring for more information.
+        docstring for more information.  # 这里的get_query_embedding是指上面的get_query_embedding
         """
 
     @abstractmethod
@@ -97,7 +97,7 @@ class BaseEmbedding(TransformComponent):
 
     def get_query_embedding(self, query: str) -> Embedding:
         """
-        Embed the input query.
+        Embed the input query.  # 这里的query是指上面的query
 
         When embedding a query, depending on the model, a special instruction
         can be prepended to the raw query string. For example, "Represent the
@@ -119,7 +119,7 @@ class BaseEmbedding(TransformComponent):
         return query_embedding
 
     async def aget_query_embedding(self, query: str) -> Embedding:
-        """Get query embedding."""
+        """Get query embedding."""  # 获取查询嵌入
         with self.callback_manager.event(
             CBEventType.EMBEDDING, payload={EventPayload.SERIALIZED: self.to_dict()}
         ) as event:
@@ -138,7 +138,7 @@ class BaseEmbedding(TransformComponent):
         queries: List[str],
         agg_fn: Optional[Callable[..., Embedding]] = None,
     ) -> Embedding:
-        """Get aggregated embedding from multiple queries."""
+        """Get aggregated embedding from multiple queries."""  # 获取多个查询的聚合嵌入
         query_embeddings = [self.get_query_embedding(query) for query in queries]
         agg_fn = agg_fn or mean_agg
         return agg_fn(query_embeddings)
@@ -148,7 +148,7 @@ class BaseEmbedding(TransformComponent):
         queries: List[str],
         agg_fn: Optional[Callable[..., Embedding]] = None,
     ) -> Embedding:
-        """Async get aggregated embedding from multiple queries."""
+        """Async get aggregated embedding from multiple queries."""  # 从多个查询中异步获取聚合嵌入
         query_embeddings = [await self.aget_query_embedding(query) for query in queries]
         agg_fn = agg_fn or mean_agg
         return agg_fn(query_embeddings)
@@ -156,37 +156,37 @@ class BaseEmbedding(TransformComponent):
     @abstractmethod
     def _get_text_embedding(self, text: str) -> Embedding:
         """
-        Embed the input text synchronously.
+        Embed the input text synchronously.  # 这里的text是指上面的text
 
         Subclasses should implement this method. Reference get_text_embedding's
-        docstring for more information.
+        docstring for more information.  # 这里的get_text_embedding是指上面的get_text_embedding
         """
 
     async def _aget_text_embedding(self, text: str) -> Embedding:
         """
-        Embed the input text asynchronously.
+        Embed the input text asynchronously.  # 嵌入输入文本异步
 
         Subclasses can implement this method if there is a true async
         implementation. Reference get_text_embedding's docstring for more
-        information.
+        information.  # 子类可以实现此方法，如果有真正的异步实现。有关更多信息，请参见get_text_embedding的docstring。
         """
-        # Default implementation just falls back on _get_text_embedding
+        # Default implementation just falls back on _get_text_embedding  # 默认实现只是回退到_get_text_embedding
         return self._get_text_embedding(text)
 
     def _get_text_embeddings(self, texts: List[str]) -> List[Embedding]:
         """
-        Embed the input sequence of text synchronously.
+        Embed the input sequence of text synchronously.  # 嵌入输入的文本序列同步
 
-        Subclasses can implement this method if batch queries are supported.
+        Subclasses can implement this method if batch queries are supported.  # 如果支持批量查询，子类可以实现此方法。
         """
         # Default implementation just loops over _get_text_embedding
         return [self._get_text_embedding(text) for text in texts]
 
     async def _aget_text_embeddings(self, texts: List[str]) -> List[Embedding]:
         """
-        Embed the input sequence of text asynchronously.
+        Embed the input sequence of text asynchronously.  # 嵌入输入的文本序列异步
 
-        Subclasses can implement this method if batch queries are supported.
+        Subclasses can implement this method if batch queries are supported.  # 如果支持批量查询，子类可以实现此方法。
         """
         return await asyncio.gather(
             *[self._aget_text_embedding(text) for text in texts]
@@ -194,12 +194,12 @@ class BaseEmbedding(TransformComponent):
 
     def get_text_embedding(self, text: str) -> Embedding:
         """
-        Embed the input text.
+        Embed the input text.  # 嵌入输入文本
 
-        When embedding text, depending on the model, a special instruction
-        can be prepended to the raw text string. For example, "Represent the
-        document for retrieval: ". If you're curious, other examples of
-        predefined instructions can be found in embeddings/huggingface_utils.py.
+        When embedding text, depending on the model, a special instruction  # 嵌入文本时，根据模型，可以在原始文本字符串之前添加特殊指令
+        can be prepended to the raw text string. For example, "Represent the  # 例如，“代表
+        document for retrieval: ". If you're curious, other examples of  # 检索文档：”。如果你好奇，其他的例子
+        predefined instructions can be found in embeddings/huggingface_utils.py. # 预定义的指令可以在embeddings/huggingface_utils.py中找到。
         """
         with self.callback_manager.event(
             CBEventType.EMBEDDING, payload={EventPayload.SERIALIZED: self.to_dict()}
@@ -216,7 +216,7 @@ class BaseEmbedding(TransformComponent):
         return text_embedding
 
     async def aget_text_embedding(self, text: str) -> Embedding:
-        """Async get text embedding."""
+        """Async get text embedding."""  # 异步获取文本嵌入
         with self.callback_manager.event(
             CBEventType.EMBEDDING, payload={EventPayload.SERIALIZED: self.to_dict()}
         ) as event:
@@ -237,7 +237,7 @@ class BaseEmbedding(TransformComponent):
         show_progress: bool = False,
         **kwargs: Any,
     ) -> List[Embedding]:
-        """Get a list of text embeddings, with batching."""
+        """Get a list of text embeddings, with batching."""  # 获取文本嵌入的列表，批处理
         cur_batch: List[str] = []
         result_embeddings: List[Embedding] = []
 
@@ -268,7 +268,7 @@ class BaseEmbedding(TransformComponent):
     async def aget_text_embedding_batch(
         self, texts: List[str], show_progress: bool = False
     ) -> List[Embedding]:
-        """Asynchronously get a list of text embeddings, with batching."""
+        """Asynchronously get a list of text embeddings, with batching."""  # 异步获取文本嵌入的列表，批处理
         cur_batch: List[str] = []
         callback_payloads: List[Tuple[str, List[str]]] = []
         result_embeddings: List[Embedding] = []
@@ -286,6 +286,7 @@ class BaseEmbedding(TransformComponent):
                 cur_batch = []
 
         # flatten the results of asyncio.gather, which is a list of embeddings lists
+        # 平铺asyncio.gather的结果，这是一个嵌入列表的列表
         nested_embeddings = []
         if show_progress:
             try:
@@ -328,7 +329,7 @@ class BaseEmbedding(TransformComponent):
         embedding2: Embedding,
         mode: SimilarityMode = SimilarityMode.DEFAULT,
     ) -> float:
-        """Get embedding similarity."""
+        """Get embedding similarity."""  # 获取嵌入相似性
         return similarity(embedding1=embedding1, embedding2=embedding2, mode=mode)
 
     def __call__(self, nodes: List[BaseNode], **kwargs: Any) -> List[BaseNode]:

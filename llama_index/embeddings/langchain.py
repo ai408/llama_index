@@ -11,11 +11,11 @@ if TYPE_CHECKING:
 
 
 class LangchainEmbedding(BaseEmbedding):
-    """External embeddings (taken from Langchain).
+    """External embeddings (taken from Langchain).  # 外部嵌入（从Langchain中获取）
 
     Args:
         langchain_embedding (langchain.embeddings.Embeddings): Langchain
-            embeddings class.
+            embeddings class.  # Langchain嵌入类。
     """
 
     _langchain_embedding: "LCEmbeddings" = PrivateAttr()

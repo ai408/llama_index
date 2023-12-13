@@ -74,14 +74,14 @@ class AzureOpenAIEmbedding(OpenAIEmbedding):
             **kwargs,
         )
 
-    @root_validator(pre=True)
+    @root_validator(pre=True)  # 根验证器
     def validate_env(cls, values: Dict[str, Any]) -> Dict[str, Any]:
-        """Validate necessary credentials are set."""
+        """Validate necessary credentials are set."""  # 注释：验证必要的凭据是否设置。
         if (
             values["api_base"] == "https://api.openai.com/v1"
             and values["azure_endpoint"] is None
         ):
-            raise ValueError(
+            raise ValueError(  # 值错误
                 "You must set OPENAI_API_BASE to your Azure endpoint. "
                 "It should look like https://YOUR_RESOURCE_NAME.openai.azure.com/"
             )
@@ -116,6 +116,6 @@ class AzureOpenAIEmbedding(OpenAIEmbedding):
             "http_client": self._http_client,
         }
 
-    @classmethod
+    @classmethod  # 类方法
     def class_name(cls) -> str:
-        return "AzureOpenAIEmbedding"
+        return "AzureOpenAIEmbedding"  # AzureOpenAI嵌入

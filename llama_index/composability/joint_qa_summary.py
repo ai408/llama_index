@@ -13,7 +13,7 @@ from llama_index.storage.storage_context import StorageContext
 from llama_index.tools.query_engine import QueryEngineTool
 
 DEFAULT_SUMMARY_TEXT = "Use this index for summarization queries"
-DEFAULT_QA_TEXT = (
+DEFAULT_QA_TEXT = (  # 默认的问答文本
     "Use this index for queries that require retrieval of specific "
     "context from documents."
 )

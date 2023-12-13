@@ -15,11 +15,11 @@ API_URL = "https://api.jina.ai/v1/embeddings"
 
 
 class JinaEmbedding(BaseEmbedding):
-    """JinaAI class for embeddings.
+    """JinaAI class for embeddings.  # JinaAI模型嵌入类
 
     Args:
-        model (str): Model for embedding.
-            Defaults to `jina-embeddings-v2-base-en`
+        model (str): Model for embedding.  # 嵌入模型
+            Defaults to `jina-embeddings-v2-base-en`  # 默认为`jina-embeddings-v2-base-en`
     """
 
     api_key: str = Field(default=None, description="The JinaAI API key.")

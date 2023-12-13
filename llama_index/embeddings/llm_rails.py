@@ -10,7 +10,7 @@ logger = logging.getLogger(__name__)
 
 
 class LLMRailsEmbedding(BaseEmbedding):
-    """LLMRails embedding models.
+    """LLMRails embedding models.  # LLMRails嵌入模型。
 
     This class provides an interface to generate embeddings using a model deployed
     in an LLMRails cluster. It requires a model_id of the model deployed in the cluster and api key you can obtain

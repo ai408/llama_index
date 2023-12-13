@@ -14,14 +14,14 @@ logger = logging.getLogger(__name__)
 # For bge models that Gradient AI provides, it is suggested to add the instruction for retrieval.
 # Reference: https://huggingface.co/BAAI/bge-large-en-v1.5#model-list
 QUERY_INSTRUCTION_FOR_RETRIEVAL = (
-    "Represent this sentence for searching relevant passages:"
+    "Represent this sentence for searching relevant passages:"  # 表示此句以搜索相关段落：
 )
 
 GRADIENT_MAX_BATCH_SIZE = 100
 
 
 class GradientEmbedding(BaseEmbedding):
-    """GradientAI embedding models.
+    """GradientAI embedding models.  # GradientAI嵌入模型。
 
     This class provides an interface to generate embeddings using a model
     deployed in Gradient AI. At the initialization it requires a model_id

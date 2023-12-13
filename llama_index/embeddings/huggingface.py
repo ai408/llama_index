@@ -46,20 +46,20 @@ class HuggingFaceEmbedding(BaseEmbedding):
 
     def __init__(
         self,
-        model_name: Optional[str] = None,
-        tokenizer_name: Optional[str] = None,
-        pooling: Union[str, Pooling] = "cls",
-        max_length: Optional[int] = None,
-        query_instruction: Optional[str] = None,
-        text_instruction: Optional[str] = None,
-        normalize: bool = True,
-        model: Optional[Any] = None,
-        tokenizer: Optional[Any] = None,
-        embed_batch_size: int = DEFAULT_EMBED_BATCH_SIZE,
-        cache_folder: Optional[str] = None,
-        trust_remote_code: bool = False,
-        device: Optional[str] = None,
-        callback_manager: Optional[CallbackManager] = None,
+        model_name: Optional[str] = None,  # 模型名称
+        tokenizer_name: Optional[str] = None,  # 分词器名称
+        pooling: Union[str, Pooling] = "cls",  # 池化策略
+        max_length: Optional[int] = None,  # 最大长度
+        query_instruction: Optional[str] = None,  # 查询指令
+        text_instruction: Optional[str] = None,  # 文本指令
+        normalize: bool = True,  # 是否归一化
+        model: Optional[Any] = None,  # 模型
+        tokenizer: Optional[Any] = None,  # 分词器
+        embed_batch_size: int = DEFAULT_EMBED_BATCH_SIZE,  # 嵌入批次大小
+        cache_folder: Optional[str] = None,  # 缓存文件夹
+        trust_remote_code: bool = False,  # 是否信任远程代码
+        device: Optional[str] = None,  # 设备
+        callback_manager: Optional[CallbackManager] = None,  # 回调管理器
     ):
         try:
             from transformers import AutoModel, AutoTokenizer

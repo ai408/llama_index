@@ -8,7 +8,7 @@ if TYPE_CHECKING:
 
 
 class Pooling(str, Enum):
-    """Enum of possible pooling choices with pooling behaviors."""
+    """Enum of possible pooling choices with pooling behaviors."""  # 可能的池化选择的枚举
 
     CLS = "cls"
     MEAN = "mean"

@@ -14,7 +14,7 @@ DEFAULT_QUERY_BGE_INSTRUCTION_EN = (
 )
 DEFAULT_QUERY_BGE_INSTRUCTION_ZH = "为这个句子生成表示以用于检索相关文章："
 
-BGE_MODELS = (
+BGE_MODELS = (  # BGE模型列表
     "BAAI/bge-small-en",
     "BAAI/bge-small-en-v1.5",
     "BAAI/bge-base-en",

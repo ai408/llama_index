@@ -4,8 +4,8 @@ from llama_index.core.base_retriever import BaseRetriever
 from llama_index.core.image_retriever import BaseImageRetriever
 
 __all__ = [
-    "BaseRetriever",
-    "BaseQueryEngine",
-    "MultiModalRetriever",
-    "BaseImageRetriever",
+    "BaseRetriever",  # 基础检索器
+    "BaseQueryEngine",  # 基础查询引擎
+    "MultiModalRetriever",  # 多模态检索器
+    "BaseImageRetriever",  # 图像检索器
 ]
